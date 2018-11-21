@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game đấm bộc</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <!-- bag image -->
+        <div id="bag">
+        </div>
+        <!-- bag health -->
+        <div id="bag-health">
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" v-bind:style="{width:health + '%'}">
+                    {{health}} %
+                </div>
+            </div>
+        </div>
+        <div class="thongbao text-center">
+            <p v-if="!endgame" v-html="flash_message.start" class="help-block"></p>
+            <p v-else-if="endgame" v-html="flash_message.end" class="help-block"></p>
+        </div>
+        <!-- game control -->
+        <div class="control text-center">
+            <button v-on:click="bite" v-show="!endgame" type="button" class="btn btn-danger">Cắn <span class="glyphicon glyphicon-fire" aria-hidden="true"></span></button>
+            <button v-on:click="reset" type="button" class="btn btn-success">Reset</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
